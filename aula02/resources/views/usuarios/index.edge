@@ -1,0 +1,23 @@
+@layout('layouts/main')
+
+@section('conteudo')
+<h1>Usuarios</h1>
+<div class="mb-3">
+<a href="{{ route('usuarios.create')}}" class="btn btn-primary">Novo usuario</a>
+</div>
+<div class="row">
+    @each(usuario in usuarios)
+    <div class="col-12 col-md-4">
+        @component('components/card', {
+            title: usuario.nome,
+            
+            // link: '',
+            // buttonText: 'Ver notícia'
+        })
+            <a href="{{ route('usuarios.edit', { id: usuario.id }) }}" class="btn btn-primary" > Editar </a>
+            <a href="{{ route('usuarios.delete', { id: usuario.id }) }}" class="btn btn-danger" > Remover </a>
+        @end
+        </div>
+    @end
+</div>
+@end

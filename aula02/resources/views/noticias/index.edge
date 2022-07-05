@@ -1,0 +1,37 @@
+@layout('layouts/main')
+
+@section('conteudo')
+<h1>Noticias</h1>
+
+@can('noticiasCreate')
+<div class="mb-3">
+<a href="{{ route('noticias.create')}}" class="btn btn-primary">Nova Notícia</a>
+</div>
+@end
+
+<div class="row">
+    @each(noticia in noticias)
+    <div class="col-12 col-md-4">
+        @component('components/card', {
+            title: noticia.titulo,    
+            // link: '',
+            // buttonText: 'Ver notícia'
+        })
+            @can('noticiasUpdate')
+            <a href="{{ route('noticias.edit', { id: noticia.id }) }}" class="btn btn-primary" > Editar </a>
+            @end
+            
+            @can('noticiasDelete')
+            <a href="{{ route('noticias.delete', { id: noticia.id }) }}" class="btn btn-danger" > Remover </a>
+            @end
+
+           
+            <a href="{{ route('noticias.view', { id: noticia.id }) }}" class="btn btn-light" >
+                <i class="bi bi-line"></i></a>
+         
+
+            @end
+        </div>
+    @end
+</div>
+@end

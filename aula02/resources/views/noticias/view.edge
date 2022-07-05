@@ -1,0 +1,34 @@
+@layout('layouts/main')
+
+@section('conteudo')
+   <h1>{{noticia.titulo}}</h1>
+
+    <div>
+        {{noticia.conteudo}}
+    </div>
+
+    <section>
+        <h2>Envie seu comentário</h2>
+        <form action="{{ route('noticias.comment', { id: noticia.id })}}">
+            <div class=mb-2>
+                <label for="comentario"> comentário</label>
+                <textarea name="comentario" id="comentario" class="form-control"></textarea>
+            </div>
+            <div>
+                <button class="btn btn-success">Enviar</button>
+            </div>
+        </form>
+    </section>
+
+    @if(noticia.comentarios)
+    <section>
+        <h3>Comentários</h3>
+        @each (comentario in noticia.comentarios)
+        <p>
+            {{comentario.comentario}}
+        </p>
+        @end
+    </section>
+@end
+
+@end

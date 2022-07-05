@@ -1,0 +1,10 @@
+@layout('layouts/main')
+
+@section('conteudo')
+
+@!component('usuarios/_form', {
+    rota: route('usuarios.update', { id: usuario.id }),
+    dados: usuario,
+    alterar: true
+})
+@end

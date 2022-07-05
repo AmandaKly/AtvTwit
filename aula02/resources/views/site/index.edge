@@ -1,0 +1,18 @@
+@layout('layouts/main')
+
+@section('conteudo')
+<h1>{{ titulo }}</h1>
+<div class="row">
+    @each(noticia in noticias)
+    <div class="col-12 col-md-4">
+        @component('components/card', {
+            title: noticia.titulo,    
+            link: '',
+            buttonText: 'Ver notícia'
+        })
+        
+        @end
+        </div>
+    @end
+</div>
+@end

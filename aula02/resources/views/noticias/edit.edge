@@ -1,0 +1,9 @@
+@layout('layouts/main')
+
+@section('conteudo')
+
+@!component('noticias/_form', {
+    rota: route('noticias.update', { id: noticia.id }),
+    dados: noticia
+})
+@end
